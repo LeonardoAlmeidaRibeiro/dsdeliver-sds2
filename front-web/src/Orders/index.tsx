@@ -19,7 +19,7 @@ function Orders() {
  }, 0);
 
     useEffect(()=>{
-        fetchProducts().then(response => setProducts(response.data)).catch(error=>console.log)
+        fetchProducts().then(response => setProducts(response.data)).catch(()=>toast.warning('Erro ao listar produtos'))
     },[]);
 const handleSelectProduct = (product: Product) => {
         const isAlreadySelected = checkIsSelected(selectedProducts, product);
@@ -40,7 +40,7 @@ const handleSelectProduct = (product: Product) => {
         }
       
         saveOrder(payload).then((response) => {
-          toast.error(`Pedido enviado com sucesso! Nº ${response.data.id}`);
+          toast.error(`Pedido enviado com sucesso! Nº ${response.data.id }`);
           setSelectedProducts([]);
         })
           .catch(() => {
